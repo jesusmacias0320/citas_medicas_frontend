@@ -34,7 +34,7 @@ const DoctorDashboard = () => {
     const handleStatusChange = async (citaId, nuevoEstado) => {
         
         const result = await Swal.fire({
-            title: `¿Cambiar a {nuevoEstado}?`,
+            title: `¿Cambiar a ${nuevoEstado}?`,
             text: "Se notificará al paciente sobre este cambio",
             icon: 'question',
             showCancelButton: true,
@@ -54,6 +54,12 @@ const DoctorDashboard = () => {
                 {estado: nuevoEstado },
                 {headers: {Authorization: `Bearer ${token}`} }
             );
+            
+            setAppointments(prevAppointments => 
+                prevAppointments.map(cita => 
+                    cita.id === citaId ? { ...cita, estado: nuevoEstado } : cita
+                )
+            );
 
             Swal.fire({
                 icon: 'success',
@@ -63,8 +69,6 @@ const DoctorDashboard = () => {
                 showCancelButton: false
             });
 
-            
-            await fetchAgenda();
 
         }catch(error){
             console.error("Error al actualizar el estado. ", error);
