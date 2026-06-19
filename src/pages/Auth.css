@@ -1,0 +1,171 @@
+
+/* =========================================
+   1. CONTENEDOR PRINCIPAL (La tarjeta blanca)
+   Aplica para Login, Register, Forgot y Reset
+   ========================================= */
+.auth-container, .auth-card {
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 400px;
+  width: 100%;
+  margin: 80px auto; /* Centra la caja en la pantalla */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido */
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   2. ESTILOS DE LOGIN Y REGISTRO
+   ========================================= */
+.auth-title {
+  margin-bottom: 15px;
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.auth-form label {
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: -5px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  border-color: #3498db;
+}
+
+.auth-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.auth-button:hover {
+  background-color: #2980b9;
+}
+
+.auth-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.msg-error { color: #e74c3c; font-size: 14px; text-align: center; }
+.msg-success { color: #2ecc71; font-size: 14px; text-align: center; }
+
+/* =========================================
+   3. ESTILOS DE RECUPERACIÓN DE CONTRASEÑA
+   ========================================= */
+.auth-card h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.auth-card button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.auth-card button:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+.auth-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
