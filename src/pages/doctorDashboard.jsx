@@ -18,7 +18,7 @@ const DoctorDashboard = () => {
         try{
             const token = localStorage.getItem('token');
             
-            const response = await axios.get(`http://localhost:5000/api/appointments/doctor-appointments`,{
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/appointments/doctor-appointments`,{
                 headers: {Authorization: `Bearer ${token}`}
             });
             setAppointments(response.data.appointments || []);
@@ -50,7 +50,7 @@ const DoctorDashboard = () => {
             const token = localStorage.getItem('token');
 
             
-            await axios.patch(`http://localhost:5000/api/appointments/${citaId}/status`,
+            await axios.patch(`${import.meta.env.VITE_API_URL}/appointments/${citaId}/status`,
                 {estado: nuevoEstado },
                 {headers: {Authorization: `Bearer ${token}`} }
             );

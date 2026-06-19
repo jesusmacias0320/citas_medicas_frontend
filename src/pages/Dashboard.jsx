@@ -35,7 +35,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/api/appointments/my-appointments', {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/appointments/my-appointments`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setAppointments(response.data.appointments || []);
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
     const fetchMedicos = async() => {
         try{
-            const response = await axios.get('http://localhost:5000/api/doctors/lista');
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/doctors/lista`);
             setMedicos(response.data);
 
         }catch(error){
@@ -72,7 +72,7 @@ const Dashboard = () => {
             if(doctorId && fecha) {
                 setLoadingSlots(true);
                 try{
-                    const response = await axios.get(`http://localhost:5000/api/appointments/available/${doctorId}/${fecha}`);
+                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/appointments/available/${doctorId}/${fecha}`);
                     setAvailableSlots(response.data.availableSlots || []);
                 }catch(error){
                     console.error("Error al cargar horarios disponibles", error);
@@ -106,7 +106,7 @@ const Dashboard = () => {
 
         try {
             const token = localStorage.getItem('token');
-            await axios.post('http://localhost:5000/api/appointments/book',
+            await axios.post(`${import.meta.env.VITE_API_URL}/appointments/book`,
                { doctor_id: doctorId, fecha, hora },
                { headers: { Authorization: `Bearer ${token}` } } 
             );
@@ -158,7 +158,7 @@ const Dashboard = () => {
 
         try{
             const token = localStorage.getItem('token');
-            await axios.put(`http://localhost:5000/api/appointments/cancel/${citaId}` ,
+            await axios.put(`${import.meta.env.VITE_API_URL}/appointments/cancel/${citaId}` ,
                 {},
                 {headers: {Authorization: `Bearer ${token}`} }
             );

@@ -36,7 +36,7 @@ const ResetPassword = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`, {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/reset-password/${token}`, {
                 newPassword: passwords.newPassword
             });
             
@@ -99,7 +99,7 @@ const ResetPassword = () => {
                 </form>
             </div>
         </div>
-    );
+    );  
 };
 
 export default ResetPassword;

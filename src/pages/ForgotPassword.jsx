@@ -12,7 +12,7 @@ const ForgotPassword = () => {
         setIsSubmitting(true);
 
         try{
-            const response = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/forgot-password`, { email });
             Swal.fire('¡Correo enviado!', response.data.message, 'success');
             setEmail('');
         }catch(error){
