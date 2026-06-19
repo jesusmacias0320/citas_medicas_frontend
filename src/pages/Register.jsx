@@ -67,7 +67,7 @@ const Register = () => {
 
                 <label>Contraseña:</label>
                 <input
-                 type="text" 
+                 type="password" 
                  className='auth-input'
                  placeholder='Mínimo 6 caracteres'
                  value={password}
