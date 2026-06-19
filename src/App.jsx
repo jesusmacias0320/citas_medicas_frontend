@@ -3,7 +3,7 @@ import Login from './pages/Login';
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
-import DoctorDashboard from './pages/DoctorDashboard';
+import DoctorDashboard from './pages/doctorDashboard';
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from './pages/ResetPassword';
 
