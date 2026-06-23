@@ -16,11 +16,19 @@ const DoctorDashboard = () => {
     const fetchAgenda = async () => {
         if (!user) return;
         try{
+           try{
             const token = localStorage.getItem('token');
+
+            console.log("1. Enviando orden al servidor..."); // <-- Cámara 1
             
-            const response = await axios.get(`${import.meta.env.VITE_API_URL}/appointments/doctor-appointments`,{
-                headers: {Authorization: `Bearer ${token}`}
-            });
+            await axios.patch(`${import.meta.env.VITE_API_URL}/appointments/${citaId}/status`,
+                {estado: nuevoEstado },
+                {headers: {Authorization: `Bearer ${token}`} }
+            );
+
+            console.log("2. El servidor respondió correctamente!");
+
+            
             setAppointments(response.data.appointments || []);
         }catch(error){
             console.error("Error al cargar la agenda médica: ", error);
