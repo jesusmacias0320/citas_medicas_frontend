@@ -15,27 +15,19 @@ const DoctorDashboard = () => {
 
     const fetchAgenda = async () => {
         if (!user) return;
-        try{
-           const token = localStorage.getItem('token');
-
-            console.log("1. Enviando orden al servidor..."); // <-- Cámara 1
-            
-            await axios.patch(`${import.meta.env.VITE_API_URL}/appointments/${citaId}/status`,
-                {estado: nuevoEstado },
-                {headers: {Authorization: `Bearer ${token}`} }
-            );
-
-            console.log("2. El servidor respondió correctamente!");
-            
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/appointments/doctor-appointments`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setAppointments(response.data.appointments || []);
-        }catch(error){
+        } catch (error) {
             console.error("Error al cargar la agenda médica: ", error);
             alert("No se pudo cargar la agenda en este momento.");
-        }finally{
+        } finally {
             setLoading(false);
         }
     };
-
     
     const handleStatusChange = async (citaId, nuevoEstado) => {
         
@@ -53,27 +45,24 @@ const DoctorDashboard = () => {
         if(!result.isConfirmed) return;
 
         try{
+            try {
             const token = localStorage.getItem('token');
 
+            console.log("1. Enviando orden al servidor Render..."); // <-- Cámara 1
             
             await axios.patch(`${import.meta.env.VITE_API_URL}/appointments/${citaId}/status`,
-                {estado: nuevoEstado },
-                {headers: {Authorization: `Bearer ${token}`} }
+                { estado: nuevoEstado },
+                { headers: { Authorization: `Bearer ${token}` } }
             );
-            
-            setAppointments(prevAppointments => {
-                console.log("ID que queremos cambiar:", citaId);
-                
-                return prevAppointments.map(cita => {
-                    console.log("Revisando cita:", cita); 
-                    
-                    if (cita.id == citaId) {
-                        console.log("¡Coincidencia encontrada! Actualizando pantalla...");
-                        return { ...cita, estado: nuevoEstado };
-                    }
-                    return cita;
-                });
-            });
+
+            console.log("2. El servidor respondió correctamente!"); // <-- Cámara 2
+
+            // EL TRUCO: Actualizamos la variable de React al instante
+            setAppointments(prevAppointments => 
+                prevAppointments.map(cita => 
+                    cita.id === citaId ? { ...cita, estado: nuevoEstado } : cita
+                )
+            );
 
             Swal.fire({
                 icon: 'success',
