@@ -45,7 +45,6 @@ const DoctorDashboard = () => {
         if(!result.isConfirmed) return;
 
         try{
-            try {
             const token = localStorage.getItem('token');
 
             console.log("1. Enviando orden al servidor Render..."); // <-- Cámara 1
