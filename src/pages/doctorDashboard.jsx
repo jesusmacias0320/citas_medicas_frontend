@@ -55,11 +55,19 @@ const DoctorDashboard = () => {
                 {headers: {Authorization: `Bearer ${token}`} }
             );
             
-            setAppointments(prevAppointments => 
-                prevAppointments.map(cita => 
-                    cita.id === citaId ? { ...cita, estado: nuevoEstado } : cita
-                )
-            );
+            setAppointments(prevAppointments => {
+                console.log("ID que queremos cambiar:", citaId);
+                
+                return prevAppointments.map(cita => {
+                    console.log("Revisando cita:", cita); 
+                    
+                    if (cita.id == citaId) {
+                        console.log("¡Coincidencia encontrada! Actualizando pantalla...");
+                        return { ...cita, estado: nuevoEstado };
+                    }
+                    return cita;
+                });
+            });
 
             Swal.fire({
                 icon: 'success',
