@@ -16,8 +16,7 @@ const DoctorDashboard = () => {
     const fetchAgenda = async () => {
         if (!user) return;
         try{
-           try{
-            const token = localStorage.getItem('token');
+           const token = localStorage.getItem('token');
 
             console.log("1. Enviando orden al servidor..."); // <-- Cámara 1
             
@@ -27,7 +26,6 @@ const DoctorDashboard = () => {
             );
 
             console.log("2. El servidor respondió correctamente!");
-
             
             setAppointments(response.data.appointments || []);
         }catch(error){
