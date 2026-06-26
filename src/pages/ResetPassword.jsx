@@ -10,7 +10,7 @@ const ResetPassword = () => {
     const navigate = useNavigate();
 
     const [passwords, setPasswords] = useState({
-        newPassword: ' ',
+        newPassword: '',
         confirmPassword: ''
     });
 
