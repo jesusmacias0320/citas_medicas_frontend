@@ -15,7 +15,7 @@ Interfaz para que los usuarios puedan registrarse, iniciar sesión y agendar sus
 Interfaz interna para que el personal registre nuevos profesionales, asigne horarios laborales y gestione citas.
 * **Link en vivo (Vercel):** [https://admin-citas-medicas-eight.vercel.app](https://admin-citas-medicas-eight.vercel.app)
 * **Credenciales de prueba:**
-  * **Usuario:** `admin@citasmedicas.com`
+  * **Usuario:** `admin@citasmedicas.co`
   * **Contraseña:** `admin123`
   * *(Nota: En la base de datos ya está configurado el "Dr. Demo" con horarios de L-V de 9am a 5pm y Sábados de 9am a 2pm para probar el flujo completo).*
 
